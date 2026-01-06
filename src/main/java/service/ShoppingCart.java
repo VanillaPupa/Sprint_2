@@ -3,37 +3,32 @@ package service;
 import model.Food;
 
 public class ShoppingCart {
+    private double fullPrice = 0;
+    private double fullVegetarianPrice = 0;
+    private double discountedPrice = 0;
 
     public ShoppingCart (Food [] args) {
+        for (int i=0; i<args.length; i++) {
+            int amount = args[i].getAmount();
+            double price = args[i].getPrice();
+            boolean isVegetarian = args[i].isVegetarian();
+            //String colour = args[i].colour;
+            fullPrice = fullPrice + (price * amount);
+            if (isVegetarian){
+                fullVegetarianPrice = fullVegetarianPrice + (price * amount);
+            }
+        }
     }
 
-    public double getCartFullPrice (Food [] item) {
-        double fullPrice = 0;
-
-        for (int i=0; i<item.length; i++) {
-            int amount = item[i].getAmount();
-            double price = item[i].getPrice();
-            fullPrice = fullPrice + (price * amount);
-        }
+    public double getCartFullPrice () {
         return fullPrice;
     }
 
     public double getCartDiscountedPrice () {
-        return 0;
+        return discountedPrice;
     }
 
-    public double getVegetarianCartFullPrice (Food [] item) {
-        double fullPrice = 0;
-
-        for (int i=0; i<item.length; i++) {
-            boolean isVegetarian = item[i].isVegetarian();
-
-            if (isVegetarian){
-                int amount = item[i].getAmount();
-                double price = item[i].getPrice();
-                fullPrice = fullPrice + (price * amount);
-            }
-        }
-        return fullPrice;
+    public double getVegetarianCartFullPrice () {
+        return fullVegetarianPrice;
     }
 }

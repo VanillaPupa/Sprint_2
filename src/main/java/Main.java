@@ -15,12 +15,8 @@ public class Main {
 
         ShoppingCart cart = new ShoppingCart(shoppingCart);
 
-        System.out.println(cart.getCartFullPrice(shoppingCart));
+        System.out.println(cart.getCartFullPrice());
         System.out.println(cart.getCartDiscountedPrice());
-        System.out.println(cart.getVegetarianCartFullPrice(shoppingCart));
+        System.out.println(cart.getVegetarianCartFullPrice());
     }
 }
-
-/*Все переменные класса должны быть недоступны извне, если не указано иное.
-Доступ к ним реализуй через известные тебе методы: создавай только те,
-которые действительно нужны для реализации описанной функциональности. */
