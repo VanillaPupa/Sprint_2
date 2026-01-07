@@ -25,5 +25,4 @@ public class Apple extends Food {
             return price;
         }
     }
-    //дописать метод, возвращающий скидку 60, если цвет красный
 }
