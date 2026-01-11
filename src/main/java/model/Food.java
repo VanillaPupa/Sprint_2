@@ -1,6 +1,6 @@
 package model;
 
-public abstract class Food {
+public abstract class Food implements Discountable {
     protected int amount;
     protected double price;
     protected boolean isVegetarian;
@@ -17,5 +17,3 @@ public abstract class Food {
         return isVegetarian;
     }
 }
-
-/* protected даёт доступ всем из пакета + потомкам, в задании: только потомкам - ? */

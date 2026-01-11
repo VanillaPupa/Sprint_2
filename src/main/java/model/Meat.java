@@ -7,4 +7,9 @@ public class Meat extends Food {
         this.price = price;
         isVegetarian = false;
     }
+
+    @Override
+    public double getDiscount () {
+        return 0;
+    }
 }

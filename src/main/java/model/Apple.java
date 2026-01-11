@@ -1,7 +1,9 @@
 package model;
 
-import static model.constants.Colour.red;
-import static model.constants.Discount.discount;
+import java.util.Objects;
+
+import static model.constants.Colour.RED_COLOR;
+import static model.constants.Discount.DISCOUNT;
 
 public class Apple extends Food {
     private String colour;
@@ -14,15 +16,16 @@ public class Apple extends Food {
 
     }
 
-    public String getColour(){
-        return colour;
+    @Override
+    public double getDiscount () {
+        if (Objects.equals(colour, RED_COLOR)){
+            return DISCOUNT;
+        } else {
+            return 0;
+        }
     }
 
-    public double getDiscountedPrice (){
-        if (colour == red){
-            return price * discount / 100;
-        } else {
-            return price;
-        }
+    public String getColour(){
+        return colour;
     }
 }

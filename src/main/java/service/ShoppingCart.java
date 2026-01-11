@@ -4,34 +4,43 @@ import model.Food;
 
 public class ShoppingCart {
     private Food[] foodInCart;
-    private double fullPrice = 0;
-    private double fullVegetarianPrice = 0;
-    private double discountedPrice = 0;
 
     public ShoppingCart(Food[] args) {
-        for (int i = 0; i < args.length; i++) {
-            int amount = args[i].getAmount();
-            double price = args[i].getPrice();
-            boolean isVegetarian = args[i].isVegetarian();
-            //String colour = args[i].colour;
-            fullPrice = fullPrice + (price * amount);
-            if (isVegetarian) {
-                fullVegetarianPrice = fullVegetarianPrice + (price * amount);
-            }
-        }
+        foodInCart = args;
     }
 
 
     public double getCartFullPrice() {
+        double fullPrice = 0;
+        for (int i = 0; i < foodInCart.length; i++) {
+            int amount = foodInCart[i].getAmount();
+            double price = foodInCart[i].getPrice();
+            fullPrice = fullPrice + (price * amount);
+        }
         return fullPrice;
     }
 
     public double getCartDiscountedPrice() {
+        double discountedPrice = 0;
+        for (int i=0; i<foodInCart.length; i++) {
+            int amount = foodInCart[i].getAmount();
+            double price = foodInCart[i].getPrice();
+            double discount = foodInCart[i].getDiscount();
+            discountedPrice = discountedPrice + (price * amount) - (price * amount * discount / 100);
+        }
         return discountedPrice;
     }
-    //не смогла разобраться, как реализовать метод и как использовать Discountable для этого
 
     public double getVegetarianCartFullPrice() {
+        double fullVegetarianPrice = 0;
+        for (int i = 0; i < foodInCart.length; i++) {
+            boolean isVegetarian = foodInCart[i].isVegetarian();
+            if (isVegetarian) {
+                int amount = foodInCart[i].getAmount();
+                double price = foodInCart[i].getPrice();
+                fullVegetarianPrice = fullVegetarianPrice + (price * amount);
+            }
+        }
         return fullVegetarianPrice;
     }
 }
